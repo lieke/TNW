@@ -39,6 +39,6 @@ class   Code(val codeLength: Int, val code: List[Int]) {
     val unzippedList = zippedList.unzip
     val guess = unzippedList._1
     val code = unzippedList._2
-    code.filter(x => guess.contains(x)).size
+    (guess.filter(x => code.contains(x)).size).min(code.filter(x => guess.contains(x)).size)
   }
 }
