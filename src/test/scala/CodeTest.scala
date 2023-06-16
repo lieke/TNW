@@ -53,5 +53,53 @@ class CodeTest extends AnyFlatSpec with should.Matchers {
     amountOfOrangeLights should be (3)
   }
 
+  "For the code 348 the amount of orange and green lights" should "be right" in { // bug found during the TNW conference
+    val code = new Code(3, List(3,4,8))
+    var guess = List(8,3,3)
+    var exactlyRightFilteredOut = code.filterOutExactlyRightNumbers(code.code, guess)
+    var amountOfGreenLights = guess.size - exactlyRightFilteredOut.size
+    var amountOfOrangeLights = code.checkContainsNumbers(exactlyRightFilteredOut)
+    amountOfGreenLights should be (0)
+    amountOfOrangeLights should be (2)
+
+    guess = List(3,3,8)
+    exactlyRightFilteredOut = code.filterOutExactlyRightNumbers(code.code, guess)
+    amountOfGreenLights = guess.size - exactlyRightFilteredOut.size
+    amountOfOrangeLights = code.checkContainsNumbers(exactlyRightFilteredOut)
+    amountOfGreenLights should be (2)
+    amountOfOrangeLights should be (0)
+
+    guess = List(4,3,8)
+    exactlyRightFilteredOut = code.filterOutExactlyRightNumbers(code.code, guess)
+    amountOfGreenLights = guess.size - exactlyRightFilteredOut.size
+    amountOfOrangeLights = code.checkContainsNumbers(exactlyRightFilteredOut)
+    amountOfGreenLights should be (1)
+    amountOfOrangeLights should be (2)
+
+    guess = List(0,3,3)
+    exactlyRightFilteredOut = code.filterOutExactlyRightNumbers(code.code, guess)
+    amountOfGreenLights = guess.size - exactlyRightFilteredOut.size
+    amountOfOrangeLights = code.checkContainsNumbers(exactlyRightFilteredOut)
+    amountOfGreenLights should be (0)
+    amountOfOrangeLights should be (1)
+  }
+
+  "For the code 054 the amount of orange and green lights" should "be right" in { // bug found during the TNW conference
+    val code = new Code(3, List(0,5,4))
+    var guess = List(5,0,0)
+    var exactlyRightFilteredOut = code.filterOutExactlyRightNumbers(code.code, guess)
+    var amountOfGreenLights = guess.size - exactlyRightFilteredOut.size
+    var amountOfOrangeLights = code.checkContainsNumbers(exactlyRightFilteredOut)
+    amountOfGreenLights should be (0)
+    amountOfOrangeLights should be (2)
+
+    guess = List(5,4,5)
+    exactlyRightFilteredOut = code.filterOutExactlyRightNumbers(code.code, guess)
+    amountOfGreenLights = guess.size - exactlyRightFilteredOut.size
+    amountOfOrangeLights = code.checkContainsNumbers(exactlyRightFilteredOut)
+    amountOfGreenLights should be (0)
+    amountOfOrangeLights should be (2)
+  }
+
 }
 

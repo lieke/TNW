@@ -2,7 +2,7 @@ package main.scala
 
 import scala.io.StdIn.readLine
 
-class Code(val codeLength: Int, val code: List[Int]) {
+class   Code(val codeLength: Int, val code: List[Int]) {
 
   def crackTheCode(ringLight: RingLight): Unit = {
     var guess: List[Int] = List()
@@ -39,6 +39,6 @@ class Code(val codeLength: Int, val code: List[Int]) {
     val unzippedList = zippedList.unzip
     val guess = unzippedList._1
     val code = unzippedList._2
-    guess.filter(x => code.contains(x)).size
+    code.filter(x => guess.contains(x)).size
   }
 }
